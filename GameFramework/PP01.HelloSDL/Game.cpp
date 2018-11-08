@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Game.h"
+#include <SDL_image.h>
 
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
@@ -11,9 +12,12 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 		}
 
-		SDL_Surface* pTempSurface = SDL_LoadBMP("Assets/animate.bmp");
+		//SDL_Surface* pTempSurface = IMG_Load("Assets/animate.png");
+		SDL_Surface* pTempSurface = IMG_Load("Assets/animate-alpha.png");
 		m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
 		SDL_FreeSurface(pTempSurface);
+		SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+
 
 		m_sourceRectangle.w = 128;
 		m_sourceRectangle.h = 82;
@@ -38,9 +42,9 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 void Game::render()
 {
-	//SDL_RenderClear(m_pRenderer);
-	//SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);//3 : 텍스쳐의 범위와 출력될 범위
-	//SDL_RenderPresent(m_pRenderer);
+
+
+
 	SDL_RenderClear(m_pRenderer);
 	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
 	SDL_RenderPresent(m_pRenderer);
