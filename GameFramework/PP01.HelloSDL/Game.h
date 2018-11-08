@@ -6,8 +6,8 @@
 class Game
 {
 public:
-	Game() {}
-	~Game() {}
+	Game();
+	~Game();
 	bool init(const char* title, int xpos, int ypos,
 		int width, int height, bool fullscreen);
 	void render();
@@ -23,5 +23,4 @@ private:
 	bool m_bRunning;
 
 	int m_currentFrame;
-	TextureManager m_textureManager;
 };

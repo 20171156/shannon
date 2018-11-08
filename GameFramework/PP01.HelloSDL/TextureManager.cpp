@@ -2,6 +2,7 @@
 #include <SDL_image.h>
 #include "TextureManager.h"
 using namespace std;
+TextureManager* TextureManager::s_pInstance = NULL;
 
 bool TextureManager::load(string fileName, string id, SDL_Renderer * pRenderer)
 {

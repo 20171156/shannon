@@ -17,7 +17,12 @@ bool Game::init(const char* title, int xpos, int ypos,
 
 		m_bRunning = true;
 
-		m_textureManager.load("assets/animate-alpha.png", "animate", m_pRenderer);
+		//load 부분 대치
+		if (!TextureManager::Instance()->load("assets/animate-alpha.png", "animate", m_pRenderer))
+		{
+			return false;
+		}
+		//m_textureManager.load("assets/animate-alpha.png", "animate", m_pRenderer);
 		SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 	}
 	else
@@ -30,8 +35,11 @@ bool Game::init(const char* title, int xpos, int ypos,
 void Game::render()
 {
 	SDL_RenderClear(m_pRenderer);
-	m_textureManager.draw("animate", 0, 0, 128, 82, m_pRenderer);
-	m_textureManager.drawFrame("animate", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
+	//m_textureManager.draw("animate", 0, 0, 128, 82, m_pRenderer);
+	//m_textureManager.drawFrame("animate", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
+	TextureManager::Instance()->draw("animate", 0, 0, 128, 82, m_pRenderer);
+	TextureManager::Instance()->drawFrame("animate", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
+
 	SDL_RenderPresent(m_pRenderer);
 }
 
@@ -62,4 +70,14 @@ void Game::handleEvents()
 void Game::update()
 {
 	m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
+}
+
+Game::Game()
+{
+
+}
+
+Game::~Game()
+{
+
 }
