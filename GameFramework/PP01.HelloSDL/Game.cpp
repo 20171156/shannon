@@ -1,9 +1,7 @@
 ﻿#include "Game.h"
-#include "GameObject.h"
 #include "TextureManager.h"
 #include <iostream>
 using namespace std;
-
 
 Game* Game::s_pInstance = NULL;
 
