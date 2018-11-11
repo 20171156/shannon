@@ -1,5 +1,6 @@
 ﻿#include "Game.h"
 #include "TextureManager.h"
+#include "InputHandler.h"
 #include <iostream>
 using namespace std;
 
@@ -50,14 +51,20 @@ void Game::render()
 void Game::clean()
 {
     cout << "cleaning game\n";
-    SDL_DestroyWindow(m_pWindow);
-    SDL_DestroyRenderer(m_pRenderer);
+    //SDL_DestroyWindow(m_pWindow);
+    //SDL_DestroyRenderer(m_pRenderer);
+    TheInputHandler::Instance()->clean();
     SDL_Quit();
+}
+
+void Game::quit()
+{
+    m_bRunning = false;
 }
 
 void Game::handleEvents()
 {
-    SDL_Event event;
+    /*SDL_Event event;
     if (SDL_PollEvent(&event))
     {
         switch (event.type)
@@ -68,7 +75,8 @@ void Game::handleEvents()
         default:
             break;
         }
-    }
+    }*/
+    TheInputHandler::Instance()->update();
 }
 
 void Game::update()

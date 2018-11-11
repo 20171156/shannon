@@ -26,6 +26,7 @@ public:
     void update();
     void handleEvents();
     void clean();
+    void quit();
     bool running() { return m_bRunning; }
 
     static Game* Instance()
