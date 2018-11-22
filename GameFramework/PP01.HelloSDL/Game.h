@@ -4,6 +4,7 @@
 #include <vector>
 #include "Player.h"
 #include "Enemy.h"
+#include "GameStateMachine.h"
 
 class Game
 {
@@ -20,6 +21,7 @@ private:
 
 public:
     ~Game();
+	GameStateMachine* m_pGameStateMachine;
     bool init(const char* title, int xpos, int ypos,
         int width, int height, bool fullscreen);
     void render();

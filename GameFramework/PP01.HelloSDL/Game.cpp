@@ -1,6 +1,8 @@
 ﻿#include "Game.h"
 #include "TextureManager.h"
 #include "InputHandler.h"
+#include "MenuState.h"
+#include "PlayState.h"
 #include <iostream>
 using namespace std;
 
@@ -24,6 +26,10 @@ bool Game::init(const char* title, int xpos, int ypos,
         {
             return false;
         }
+
+		//위치가?
+		m_pGameStateMachine = new GameStateMachine();
+		m_pGameStateMachine->changeState(MenuState::Instance());
 
         m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
         m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
@@ -77,6 +83,10 @@ void Game::handleEvents()
         }
     }*/
     TheInputHandler::Instance()->update();
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
+	{
+		m_pGameStateMachine->changeState(PlayState::Instance());
+	}
 }
 
 void Game::update()
