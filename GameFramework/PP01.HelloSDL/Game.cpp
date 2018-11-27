@@ -46,15 +46,16 @@ void Game::render()
 {
 	SDL_RenderClear(m_pRenderer);
 	m_pGameStateMachine->render();
+
 	SDL_RenderPresent(m_pRenderer);
 
-    SDL_RenderClear(m_pRenderer); // clear to the draw colour
-    for (vector<GameObject*>::size_type i = 0;
-        i != m_gameObjects.size(); i++)
-    {
-        m_gameObjects[i]->draw();
-    }
-    SDL_RenderPresent(m_pRenderer); // draw to the screen
+    //SDL_RenderClear(m_pRenderer); // clear to the draw colour
+	/*for (vector<GameObject*>::size_type i = 0;
+		i != m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->draw();
+	}*/
+    //SDL_RenderPresent(m_pRenderer); // draw to the screen
 	
 
 
@@ -104,7 +105,7 @@ void Game::update()
     {
         m_gameObjects[i]->update();
     }
-
+	
 }
 
 Game::Game()
