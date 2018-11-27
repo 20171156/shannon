@@ -3,18 +3,18 @@
 #include "Vector2D.h"
 #include <vector>
 
+enum mouse_buttons
+{
+    LEFT = 0,
+    MIDDLE = 1,
+    RIGHT = 2
+};
+
 class InputHandler
 {
 public:
+
     ~InputHandler() {}
-
-    enum mouse_buttons
-    {
-        LEFT = 0,
-        MIDDLE = 1,
-        RIGHT = 2
-    };
-
     static InputHandler* Instance()
     {
         if (s_pInstance == 0) {

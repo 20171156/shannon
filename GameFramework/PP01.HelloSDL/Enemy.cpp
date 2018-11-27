@@ -8,7 +8,7 @@ Enemy::Enemy(const LoaderParams* pParams) : SDLGameObject(pParams)
 
 void Enemy::handleInput()
 {
-    if (TheInputHandler::Instance()->getMouseButtonState(InputHandler::LEFT))
+    if (TheInputHandler::Instance()->getMouseButtonState(LEFT))
     {
         m_velocity.setX(1);
     }
