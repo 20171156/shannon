@@ -120,3 +120,9 @@ void InputHandler::onKeyUp()
 {
     m_keyStates = SDL_GetKeyboardState(0);
 }
+
+void InputHandler::reset()
+{
+
+}
+

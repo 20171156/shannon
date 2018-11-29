@@ -1,16 +1,16 @@
 #include "GameStateMachine.h"
 #include <vector>
 
-void GameStateMachine::pushState(GameState *pState)
+/*void GameStateMachine::pushState(GameState *pState)
 {
 	m_gameStates.push_back(pState);
 	m_gameStates.back()->onEnter();
-}
+}*/
 
-void GameStateMachine::popState()
+/*void GameStateMachine::popState()
 {
 	changeState(m_prevState);
-}
+}*/
 
 void GameStateMachine::changeState(GameState *pState)
 {

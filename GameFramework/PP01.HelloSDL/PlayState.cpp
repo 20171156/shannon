@@ -1,16 +1,23 @@
 #include "PlayState.h"
 #include "TextureManager.h"
 #include "Game.h"
+#include "InputHandler.h"
+#include "PauseState.h"
 
 const std::string PlayState::s_playID = "PLAY";
 PlayState* PlayState::s_pInstance = NULL;
 
 void PlayState::update()
 {
-    for (int i = 0; i < m_gameObjects.size(); i++)
-    {
-        m_gameObjects[i]->update();
-    }
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
+	{
+		TheGame::Instance()->getStateMachine()->changeState(PauseState::Instance());
+	}
+	//여러군데에서 동시에 나타나는 코드들. 어떻게 최적화를 할 것인가?
+	for (int i = 0; i < m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->update();
+	}
 }
 
 void PlayState::render()
