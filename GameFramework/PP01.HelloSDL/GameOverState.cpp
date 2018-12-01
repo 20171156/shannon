@@ -1,5 +1,5 @@
-#include "GameOverState.h"
 #include "Game.h"
+#include "GameOverState.h"
 #include "MenuState.h"
 #include "PlayState.h"
 #include "TextureManager.h"
@@ -8,6 +8,30 @@
 
 const std::string GameOverState::s_gameOverID = "GAMEOVER";
 GameOverState* GameOverState::s_pInstance = NULL;
+
+GameOverState::GameOverState()
+{
+}
+
+GameOverState::~GameOverState()
+{
+}
+
+void GameOverState::update()
+{
+    for (int i = 0; i < m_gameObjects.size(); i++)
+    {
+        m_gameObjects[i]->update();
+    }
+}
+
+void GameOverState::render()
+{
+    for (int i = 0; i < m_gameObjects.size(); i++)
+    {
+        m_gameObjects[i]->draw();
+    }
+}
 
 bool GameOverState::onEnter()
 {
@@ -35,8 +59,13 @@ bool GameOverState::onEnter()
 	m_gameObjects.push_back(gameOverText);
 	m_gameObjects.push_back(button1);
 	m_gameObjects.push_back(button2);
-	std::cout << "entering PauseState\n";
+	std::cout << "entering GameOverState\n";
 	return true;
+}
+
+bool GameOverState::onExit()
+{
+    return false;
 }
 
 void GameOverState::s_gameOverToMain()
@@ -46,14 +75,4 @@ void GameOverState::s_gameOverToMain()
 void GameOverState::s_restartPlay()
 {
 	TheGame::Instance()->getStateMachine()->changeState(PlayState::Instance());
-}
-
-GameOverState::~GameOverState()
-{
-
-}
-
-GameOverState::GameOverState()
-{
-
 }

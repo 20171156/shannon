@@ -23,7 +23,7 @@ public:
 		return s_pInstance;
 	}
 private:
-	GameOverState();
+    GameOverState();
 	static void s_gameOverToMain();
 	static void s_restartPlay();
 	static const std::string s_gameOverID;

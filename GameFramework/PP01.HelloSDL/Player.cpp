@@ -11,22 +11,6 @@ void Player::handleInput()
     Vector2D* target = TheInputHandler::Instance()->getMousePosition();
     m_velocity = *target - m_position;
     m_velocity /= 50;
-    /*if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
-    {
-        m_velocity.setX(10);
-    }
-    if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
-    {
-        m_velocity.setX(-10);
-    }
-    if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
-    {
-        m_velocity.setY(-10);
-    }
-    if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
-    {
-        m_velocity.setY(10);
-    }*/
 }
 
 void Player::draw()
