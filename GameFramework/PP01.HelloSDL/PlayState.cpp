@@ -41,16 +41,21 @@ void PlayState::render()
 
 bool PlayState::onEnter()
 {
-	if (!TextureManager::Instance()->load("assets/helicopter.png",
-        "helicopter", TheGame::Instance()->getRenderer())) {
+	if (!TextureManager::Instance()->load("assets/animate.png",
+        "animate", TheGame::Instance()->getRenderer())) {
 		return false;
 	}
-	if (!TextureManager::Instance()->load("assets/helicopter2.png",
-        "helicopter2", TheGame::Instance()->getRenderer())) {
+	if (!TextureManager::Instance()->load("assets/wall.png",
+        "wall", TheGame::Instance()->getRenderer())) {
 		return false;
 	}
-	GameObject* player = new Player(new LoaderParams(500, 100, 128, 55, "helicopter"));
-	GameObject* enemy = new Enemy(new LoaderParams(100, 100, 128, 55, "helicopter2"));
+	if (!TextureManager::Instance()->load("assets/ball.png",
+		"ball", TheGame::Instance()->getRenderer())) {
+		return false;
+	}
+
+	GameObject* player = new Player(new LoaderParams(20, 20, 128, 82, "animate"));
+	GameObject* enemy = new Enemy(new LoaderParams(450, 100, 128, 55, "wall"));
 	m_gameObjects.push_back(player);
 	m_gameObjects.push_back(enemy);
 	std::cout << "entering PlayState\n";
@@ -59,7 +64,7 @@ bool PlayState::onEnter()
 
 bool PlayState::onExit()
 {
-    for (int i = 0; i < m_gameObjects.size(); i++)
+    for (int i = 0 ; i < m_gameObjects.size(); i++)
     {
         m_gameObjects[i]->clean();
     }
